@@ -34,6 +34,6 @@ def test_plot_SNR():
 	det = 'H1'
 	eventname = "test"
 	plottype = 'png' 
-	lines= ut.plot_SNR(time, timemax, SNR, pcolor, det, eventname, plottype)
-	assert True, "TclError: no display name and no $DISPLAY environment variable" 
+	lines = ut.plot_SNR(time, timemax, SNR, pcolor, det, eventname, plottype, False)
+	assert lines[1]== 2
 

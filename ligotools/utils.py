@@ -35,28 +35,31 @@ def reqshift(data,fshift=100,sample_rate=4096):
     z = np.fft.irfft(y)
     return z
 
-def plot_SNR(time, timemax, SNR, pcolor, eventname, det, plottype):
-	plt.figure(figsize=(10,8))
-	plt.subplot(2,1,1)
-	plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
-	#plt.ylim([0,25.])
-	plt.grid('on')
-	plt.ylabel('SNR')
-	plt.xlabel('Time since {0:.4f}'.format(timemax))
-	plt.legend(loc='upper left')
-	plt.title(det+' matched filter SNR around event')
+def plot_SNR(time, timemax, SNR, pcolor, eventname, det, plottype, plotnow):
+	if plotnow == True:
+		plt.figure(figsize=(10,8))
+		plt.subplot(2,1,1)
+		plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
+		#plt.ylim([0,25.])
+		plt.grid('on')
+		plt.ylabel('SNR')
+		plt.xlabel('Time since {0:.4f}'.format(timemax))
+		plt.legend(loc='upper left')
+		plt.title(det+' matched filter SNR around event')
 
     # zoom in
-	plt.subplot(2,1,2)
-	plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
-	plt.grid('on')
-	plt.ylabel('SNR')
-	plt.xlim([-0.15,0.05])
+		plt.subplot(2,1,2)
+		plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
+		plt.grid('on')
+		plt.ylabel('SNR')
+		plt.xlim([-0.15,0.05])
 	#plt.xlim([-0.3,+0.3])
-	plt.grid('on')
-	plt.xlabel('Time since {0:.4f}'.format(timemax))
-	plt.legend(loc='upper left')
-	plt.savefig('figures/'+eventname+"_"+det+"_SNR."+plottype)
+		plt.grid('on')
+		plt.xlabel('Time since {0:.4f}'.format(timemax))
+		plt.legend(loc='upper left')
+		plt.savefig('figures/'+eventname+"_"+det+"_SNR."+plottype)
+	else:
+		return time, timemax, SNR, pcolor, eventname, det, plottype, plotnow
 
 def plot_whitened(time, tevent, strain_whitenbp, pcolor, det, timemax, template_match, eventname, plottype):
 	plt.figure(figsize=(10,8))

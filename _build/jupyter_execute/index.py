@@ -758,7 +758,7 @@ for det in dets:
             template_H1 = template_match.copy()
 
         # -- Plot the result
-        utils.plot_SNR(time, timemax, SNR, pcolor, eventname, det, plottype)
+        utils.plot_SNR(time, timemax, SNR, pcolor, eventname, det, plottype, True)
         utils.plot_whitened(time, tevent, strain_whitenbp, pcolor, det, timemax, template_match, eventname, plottype)
         utils.plot_ASD(template_fft,datafreq, d_eff, freqs, data_psd, pcolor, det, fs, eventname, plottype)
 
