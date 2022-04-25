@@ -2,7 +2,7 @@
 env :
 	mamba env create -f environment.yml --name ligo
 	conda activate ligo
-	python -m ipykernel install --user --name ligo --display-name "Python 2 HW6"
+	python -m ipykernel install --user --name ligo --display-name "Python 2"
 
 .PHONY : html
 html :
